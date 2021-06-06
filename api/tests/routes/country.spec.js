@@ -61,8 +61,9 @@ describe("Country routes", () => {
               continent: "Americas",
               capital: "Buenos Aires",
               subregion: "South America",
-              area: "2780400km2",
+              area: "2780400 km2",
               population: 43590400,
+              activities: []
             },
           ]);
         }));
