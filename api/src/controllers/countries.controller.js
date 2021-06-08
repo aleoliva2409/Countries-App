@@ -36,25 +36,29 @@ const getCountries = async (req, res) => {
       const resp = await axios.get(
         `https://restcountries.eu/rest/v2/name/${name}`
       );
-      const country = resp.data;
-      const activity = await Country.findByPk(country[0].alpha3Code, {
-        include: Activity,
-      });
-      const { activities } = activity;
+      const countries = resp.data;
+      let data = []
 
-      return res.json([
-        {
-          id: country[0].alpha3Code,
-          name: country[0].name,
-          image: country[0].flag,
-          continent: country[0].region,
-          capital: country[0].capital,
-          subregion: country[0].subregion,
-          area: `${country[0].area} km2`,
-          population: country[0].population,
-          activities,
-        },
-      ]);
+      
+      for(let country of countries) {
+        const activity = await Country.findByPk(country.alpha3Code, {
+          include: Activity,
+        });
+        
+        data.push({
+          id: country.alpha3Code,
+          name: country.name,
+          image: country.flag,
+          continent: country.region,
+          capital: country.capital,
+          subregion: country.subregion,
+          area: `${country.area} km2`,
+          population: country.population,
+          activities: activity?.activities || [],
+        });
+      }
+
+      return res.json(data);
     }
   } catch (error) {
     console.log(error);

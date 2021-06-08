@@ -4,7 +4,7 @@ const postActivity = async (req, res) => {
   try {
     const { name, difficulty, duration, season, countries } = req.body;
 
-    //! hacer expresion regular para limitar el name de la acitivity
+    // ! hacer expresion regular para limitar el name de la acitivity
     const activity = await Activity.findAll({
       where: {
         name: name,

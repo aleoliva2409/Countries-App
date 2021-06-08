@@ -1,1 +1,22 @@
-@import-normalize;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  outline: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  /* background-color: red; */
+}
+
+.App {
+  min-height: 100vh;
+}
+
+.wrapper {
+  max-width: 1600px;
+  width: 90%;
+  margin: 0 auto;
+}

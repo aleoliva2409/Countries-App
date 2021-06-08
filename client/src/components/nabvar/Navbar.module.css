@@ -1,0 +1,102 @@
+.header {
+  width: 100vw;
+  background-color: rgb(116, 116, 116);
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .3125rem .625rem;
+}
+
+.nav__btn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  display: none;
+}
+
+.nav__menu {
+  display: flex;
+  padding: 0;
+}
+
+.menu__item {
+  margin: .375rem;
+  font-size: 1.25rem;
+  list-style: none;
+    border-radius: .3125rem;
+}
+
+.menu__item a, .menu__item .item__a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  padding: .5rem;
+  display: block;
+  cursor: pointer;
+
+}
+
+.menu__item:hover {
+  background-color: rgba(255,255,255,0.3);
+}
+
+.item__icon {
+  margin-left: 5px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.nav__subMenu {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 0;
+  border: 1px solid black;
+  background-color: rgb(108, 110, 236);
+}
+
+.subMenu__item {
+  margin: 0;
+  border-radius: 0;
+}
+
+.subMenu__item:first-child {
+  border-bottom: 1px solid black;
+}
+
+.subMenu__item a {
+  color: black;
+  border-radius: 5px;
+}
+
+.dropdown:hover .nav__subMenu{
+  display: block;
+}
+
+.input{
+  margin: 0 .3125rem;
+  padding: 10px;
+  font-size: .9375rem;
+  border-radius: .3125rem;
+  border: none;
+}
+
+.btn{
+  margin: 0 .3125rem;
+  padding: .625rem;
+  color: #fff;
+  font-size: .9375rem;
+  font-weight: 700;
+  border-radius: .3125rem;
+  border: none;
+  background-color: #FA057C;
+}
