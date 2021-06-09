@@ -1,29 +1,34 @@
-import React, { useState } from 'react'
-import s from './ListCountries.module.css';
-import Countries from './Countries'
-import FiltersOrders from './FiltersOrders'
+import React, { useState } from "react";
+import s from "./ListCountries.module.css";
+import Countries from "./Countries";
+import FiltersOrders from "./FiltersOrders";
 
-function ListCountries({countries}) {
-
-  const [filters, setFilters] = useState(false)
+function ListCountries({ reduxState , reduxName }) {
+  const [filters, setFilters] = useState(false);
 
   const showFilters = () => {
-    if(filters) {
-      setFilters(false)
+    if (filters) {
+      setFilters(false);
     } else {
-      setFilters(true)
+      setFilters(true);
     }
-  }
+  };
 
   return (
     <div className={`wrapper ${s.container}`}>
       <div className={s.btn__container}>
-        <button className={s.btn} onClick={showFilters}>Filters and Sorts</button>
+        <button className={s.btn} onClick={showFilters}>
+          Filters and Sorts
+        </button>
       </div>
-      {filters && <FiltersOrders />}
-      <Countries countries={countries} />
+      {filters && <FiltersOrders reduxName={reduxName} countries={reduxState} />}
+      <Countries countries={reduxState} />
+      <div className={s.btn__container}>
+        <button className={s.btn}>prev</button>
+        <button className={s.btn}>next</button>
+      </div>
     </div>
   );
 }
 
-export default ListCountries
+export default ListCountries;

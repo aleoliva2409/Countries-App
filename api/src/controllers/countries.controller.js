@@ -27,10 +27,51 @@ const getCountries = async (req, res) => {
 
         const countriesDB = await Country.findAll();
         data = true;
-        return res.json(countriesDB);
+
+        let aux = []
+
+        for (let country of countriesDB) {
+          const activity = await Country.findByPk(country.id, {
+            include: Activity,
+          });
+
+          aux.push({
+            id: country.id,
+            name: country.name,
+            image: country.image,
+            continent: country.continent,
+            capital: country.capital,
+            subregion: country.subregion,
+            area: country.area,
+            population: country.population,
+            activities: activity?.activities || [],
+          });
+        }
+
+        return res.json(aux);
       } else {
         const countriesDB = await Country.findAll();
-        return res.json(countriesDB);
+        let aux = [];
+
+        for (let country of countriesDB) {
+          const activity = await Country.findByPk(country.id, {
+            include: Activity,
+          });
+
+          aux.push({
+            id: country.id,
+            name: country.name,
+            image: country.image,
+            continent: country.continent,
+            capital: country.capital,
+            subregion: country.subregion,
+            area: country.area,
+            population: country.population,
+            activities: activity?.activities || [],
+          });
+        }
+
+        return res.json(aux);
       }
     } else {
       const resp = await axios.get(

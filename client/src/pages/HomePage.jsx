@@ -4,17 +4,16 @@ import ListCountries from "../components/countries/ListCountries";
 import { getCountries } from "../redux/ducks/countriesDuck";
 
 function HomePage() {
-
-  const dispatch = useDispatch()
-  const countries = useSelector(state => state.countries.countriesDB)
+  const dispatch = useDispatch();
+  const countries = useSelector((state) => state.countries.countriesDB);
 
   useEffect(() => {
-    dispatch(getCountries())
-  }, [dispatch])
+    dispatch(getCountries());
+  }, [dispatch]);
 
   return (
     <div>
-      <ListCountries countries={countries}/>
+      <ListCountries reduxState={countries} reduxName="db" />
     </div>
   );
 }

@@ -1,10 +1,12 @@
 import { createStore , compose , applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import countriesReducer from './ducks/countriesDuck';
+import activitiesReducer from './ducks/activitiesDuck';
 
 
 const rootReducers = combineReducers({
   countries: countriesReducer,
+  activities: activitiesReducer
 
 })
 

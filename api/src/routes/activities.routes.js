@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
-const postActivity = require("../controllers/countries.controller");
+const getActivities = require("../controllers/activities.controller")
 
-router.post("/", postActivity);
+router.get("/", getActivities)
 
-module.exports = router;
+module.exports = router
