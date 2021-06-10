@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import s from "./ListCountries.module.css";
 import Countries from "./Countries";
 import FiltersOrders from "./FiltersOrders";
@@ -6,6 +6,12 @@ import FiltersOrders from "./FiltersOrders";
 function ListCountries({ reduxState, reduxName }) {
   const [filters, setFilters] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
+
+  useEffect(() => {
+    return () => {
+      setCurrentPage(0)
+    }
+  }, [])
 
   const paginations = () => {
     return reduxState.slice(currentPage, currentPage + 10);

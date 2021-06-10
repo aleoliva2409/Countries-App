@@ -1,7 +1,7 @@
 import s from "./Navbar.module.css";
 import { Redirect } from "react-router-dom";
 import { Fragment, useState } from "react";
-import { getCountriesSearch , cleanCountriesSearch } from "../../redux/ducks/countriesDuck";
+import { getCountriesSearch } from "../../redux/ducks/countriesDuck";
 import { useDispatch } from "react-redux";
 
 function Search() {
@@ -10,7 +10,6 @@ function Search() {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
-    dispatch(cleanCountriesSearch())
     dispatch(getCountriesSearch(search));
     setSearch("");
     setRedirect(true);

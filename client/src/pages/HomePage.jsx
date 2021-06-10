@@ -8,7 +8,6 @@ function HomePage() {
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.countries.countriesDB);
   // const postActivity = useSelector((state) => state.activities.postActivity)
-  
   if (countries[0] === undefined) {
     dispatch(getCountries());
   }

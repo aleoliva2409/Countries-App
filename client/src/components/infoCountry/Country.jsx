@@ -4,7 +4,8 @@ function Country({ data }) {
   return (
     <div>
       {
-        data[0] !== undefined && 
+        data[0] === undefined ? 
+        <h1>Cargando...</h1> :
         <h1>{data[0].name}</h1>
       }
     </div>
