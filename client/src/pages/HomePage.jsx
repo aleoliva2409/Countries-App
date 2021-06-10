@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ListCountries from "../components/countries/ListCountries";
+import ListCountries from "../components/listCountries/ListCountries";
 import { getCountries } from "../redux/ducks/countriesDuck";
 
 
@@ -17,9 +17,8 @@ function HomePage() {
   //   dispatch(getCountries());
   // }, [postActivity])
 
-
   return (
-    <div>
+    <div className="wrapper">
       <ListCountries reduxState={countries} reduxName="db" />
     </div>
   );

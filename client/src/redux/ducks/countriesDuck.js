@@ -13,17 +13,18 @@ const FILTER_COUNTRIES_SEARCH = "FILTER_COUNTRIES_SEARCH";
 const FILTER_COUNTRIES_DB = "FILTER_COUNTRIES_DB";
 const FILTER_ACTIVITIES_SEARCH = "FILTER_ACTIVITIES_SEARCH";
 const FILTER_ACTIVITIES_DB = "FILTER_ACTIVITIES_DB";
-
-
+const GET_COUNTRY_DETAILS = "GET_COUNTRY_DETAILS";
+const CLEAN_COUNTRY = "CLEAN_COUNTRY";
 
 //reducer
 
 const inicialState = {
   countriesDB: [],
-  countriesSearch: []
+  countriesSearch: [],
+  countryDetails: []
 };
 
-export default function reducer(state = inicialState , action) {
+export default function reducer(state = inicialState, action) {
   switch (action.type) {
     case GET_COUNTRIES:
       return {
@@ -58,37 +59,49 @@ export default function reducer(state = inicialState , action) {
     case FILTER_ACTIVITIES_SEARCH:
       return {
         ...state,
-        countriesSearch: action.payload
-      }
+        countriesSearch: action.payload,
+      };
 
     case FILTER_ACTIVITIES_DB:
       return {
         ...state,
-        countriesDB: action.payload
-      }
+        countriesDB: action.payload,
+      };
 
     case SORT_ALPHABETICAL_SEARCH:
       return {
         ...state,
-        countriesSearch: action.payload
-      }
+        countriesSearch: action.payload,
+      };
 
     case SORT_ALPHABETICAL_DB:
       return {
         ...state,
-        countriesDB: action.payload
-      }
+        countriesDB: action.payload,
+      };
 
     case SORT_POPULATION_SEARCH:
       return {
         ...state,
-        countriesSearch: action.payload
-      }
+        countriesSearch: action.payload,
+      };
 
     case SORT_POPULATION_DB:
       return {
         ...state,
-        countriesDB: action.payload
+        countriesDB: action.payload,
+      };
+
+    case GET_COUNTRY_DETAILS:
+      return {
+        ...state,
+        countryDetails: action.payload
+      }
+
+    case CLEAN_COUNTRY:
+      return {
+        ...state,
+        countryDetails: action.payload
       }
 
     default:
@@ -103,18 +116,19 @@ export function getCountries() {
     try {
       const res = await axios.get("http://localhost:3001/countries");
 
-      return dispatch({type: GET_COUNTRIES , payload: res.data})
-
+      return dispatch({ type: GET_COUNTRIES, payload: res.data });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 }
 
 export function getCountriesSearch(name) {
   return async function (dispatch) {
     try {
-      const res = await axios.get(`http://localhost:3001/countries?name=${name}`);
+      const res = await axios.get(
+        `http://localhost:3001/countries?name=${name}`
+      );
 
       return dispatch({ type: GET_COUNTRIES_SEARCH, payload: res.data });
     } catch (error) {
@@ -126,16 +140,16 @@ export function getCountriesSearch(name) {
 export function cleanCountriesSearch() {
   return {
     type: CLEAN_COUNTRIES_SEARCH,
-    payload: []
-  }
+    payload: [],
+  };
 }
 
-export function filterByContinent(nameFilter,countries,reduxName) {
+export function filterByContinent(nameFilter, countries, reduxName) {
   const payload = countries.filter(
     (country) => country.continent === nameFilter
   );
 
-  if(reduxName === "search") {
+  if (reduxName === "search") {
     return {
       type: FILTER_COUNTRIES_SEARCH,
       payload,
@@ -149,15 +163,17 @@ export function filterByContinent(nameFilter,countries,reduxName) {
 }
 
 export function filterByActivity(nameFilter, countries, reduxName) {
-  const payload = countries.map((country) => {
-    let array = [];
-    country.activities.forEach((act) => {
-      if (act.name === nameFilter) {
-        array.push(country);
-      }
+  const payload = countries
+    .map((country) => {
+      let array = [];
+      country.activities.forEach((act) => {
+        if (act.name === nameFilter) {
+          array.push(country);
+        }
+      });
+      return array;
     })
-    return array;
-  }).flat()
+    .flat();
 
   if (reduxName === "search") {
     return {
@@ -173,16 +189,17 @@ export function filterByActivity(nameFilter, countries, reduxName) {
 }
 
 // TODO ver sort alfabeticamente
-export function sortByAlphabetical(countries,reduxName,sort) {
+export function sortByAlphabetical(countries, reduxName, sort) {
+  let payload;
 
-  let payload
-
-  if(sort === "ascendent") {
-    payload = [...countries.sort((a,b) => {
-      if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-      if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
-      return 0;
-    })]
+  if (sort === "ascendent") {
+    payload = [
+      ...countries.sort((a, b) => {
+        if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+        if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+        return 0;
+      }),
+    ];
   } else {
     payload = [
       ...countries.sort((a, b) => {
@@ -206,13 +223,13 @@ export function sortByAlphabetical(countries,reduxName,sort) {
   }
 }
 
-export function sortByPopulation(countries,reduxName,sort) {
-  let payload ;
+export function sortByPopulation(countries, reduxName, sort) {
+  let payload;
 
   if (sort === "ascendent") {
-    payload = [...countries.sort((a,b) => a.population - b.population)]
+    payload = [...countries.sort((a, b) => a.population - b.population)];
   } else {
-    payload = [...countries.sort((a,b) => b.population - a.population)]
+    payload = [...countries.sort((a, b) => b.population - a.population)];
   }
 
   if (reduxName === "search") {
@@ -226,5 +243,25 @@ export function sortByPopulation(countries,reduxName,sort) {
       payload,
     };
   }
+}
 
+export function getCountryDetails(id) {
+  return async function (dispatch) {
+    try {
+      const res = await axios.get(`http://localhost:3001/countries/${id}`);
+      return dispatch({
+        type: GET_COUNTRY_DETAILS,
+        payload: res.data
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
+
+export function cleanCountry() {
+  return {
+    type: CLEAN_COUNTRY,
+    payload: [],
+  };
 }

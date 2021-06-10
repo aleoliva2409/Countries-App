@@ -12,7 +12,7 @@ function PrincipalPage() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="wrapper">
       <h1>Principal Page</h1>
       <button>
         <Link to="/home">Go Home</Link>
