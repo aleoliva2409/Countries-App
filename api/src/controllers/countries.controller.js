@@ -36,14 +36,7 @@ const getCountries = async (req, res) => {
           });
 
           aux.push({
-            id: country.id,
-            name: country.name,
-            image: country.image,
-            continent: country.continent,
-            capital: country.capital,
-            subregion: country.subregion,
-            area: country.area,
-            population: country.population,
+            ...country.dataValues,
             activities: activity?.activities || [],
           });
         }
@@ -59,14 +52,7 @@ const getCountries = async (req, res) => {
           });
 
           aux.push({
-            id: country.id,
-            name: country.name,
-            image: country.image,
-            continent: country.continent,
-            capital: country.capital,
-            subregion: country.subregion,
-            area: country.area,
-            population: country.population,
+            ...country.dataValues,
             activities: activity?.activities || [],
           });
         }
