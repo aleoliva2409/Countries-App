@@ -15,8 +15,8 @@ function Routes() {
       <Route exact path="/activities/create" component={CreateActPage} />
       <Route exact path="/activities/lists" component={ActivitiesPage} />
       <Route path="/countries/:idCountry" component={CountryPage} />
-      <Route path="/search" component={SearchPage} />
-      <Route path="/home" component={HomePage} />
+      <Route exact path="/search" component={SearchPage} />
+      <Route exact path="/home" component={HomePage} />
       <Route exact path="/" component={PrincipalPage} />
       <Route path="*" component={NotFoundPage} />
     </Switch>

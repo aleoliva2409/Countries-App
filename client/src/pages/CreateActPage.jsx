@@ -8,9 +8,11 @@ function CreateActPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // ! ver si mandar paramentro a getcountries
-    dispatch(getCountries());
-    dispatch(reset());
+    dispatch(getCountries("form"));
+    return () => {
+      dispatch(getCountries("form"));
+      dispatch(reset());
+    };
   }, [dispatch]);
 
   return (

@@ -4,6 +4,7 @@ import Search from "./Search";
 import Keywords from "./Keywords";
 import { useDispatch } from "react-redux";
 import { reset, getCountries } from "../../redux/ducks/countriesDuck";
+import { postActivity } from "../../redux/ducks/activitiesDuck";
 
 function Form({ countries }) {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ function Form({ countries }) {
   });
 
   const handleSubmit = (e) => {
+    dispatch(postActivity(form));
     setSearch("");
     setForm({
       name: "",
@@ -26,9 +28,8 @@ function Form({ countries }) {
       season: "",
       countries: [],
     });
-    dispatch(getCountries());
+    dispatch(getCountries("form"));
     dispatch(reset());
-    // TODO aca hacemos el postActivity!!!
     e.preventDefault();
   };
 

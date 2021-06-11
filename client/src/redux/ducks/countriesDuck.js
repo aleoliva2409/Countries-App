@@ -39,8 +39,7 @@ export default function reducer(state = inicialState, action) {
     case GET_COUNTRIES:
       return {
         ...state,
-        countriesDB: action.payload,
-        countriesForm: [...action.payload],
+        countriesDB: action.payload
       };
 
     case GET_COUNTRIES_SEARCH:
@@ -118,7 +117,7 @@ export default function reducer(state = inicialState, action) {
     case GET_COUNTRIES_FORM:
       return {
         ...state,
-        countriesForm: [...state.countriesDB],
+        countriesForm: action.payload,
       };
 
     case ADD_COUNTRY_FORM:
@@ -148,7 +147,7 @@ export default function reducer(state = inicialState, action) {
     case RESET_FORM:
       return {
         ...state,
-        countriesSelected: []
+        countriesSelected: [],
       };
 
     default:
@@ -158,10 +157,14 @@ export default function reducer(state = inicialState, action) {
 
 // actions
 
-export function getCountries() {
+export function getCountries(name) {
   return async function (dispatch) {
     try {
       const res = await axios.get("http://localhost:3001/countries");
+
+      if(name === "form") {
+        return dispatch({type: GET_COUNTRIES_FORM, payload: res.data})
+      }
 
       return dispatch({ type: GET_COUNTRIES, payload: res.data });
     } catch (error) {
@@ -313,11 +316,11 @@ export function cleanCountry() {
   };
 }
 
-export function getCountriesForm() {
-  return {
-    type: GET_COUNTRIES_FORM,
-  };
-}
+// export function getCountriesForm() {
+//   return {
+//     type: GET_COUNTRIES_FORM,
+//   };
+// }
 
 export function addCountryForm(id, countries) {
   const payload = countries.filter((country) => country.id === id);

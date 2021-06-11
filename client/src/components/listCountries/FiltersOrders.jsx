@@ -20,8 +20,6 @@ function FiltersOrders({ reduxName, countries ,change }) {
   });
   const dispatch = useDispatch();
 
-  // TODO actualizar las activities y continentes de los paises que resultan de la busqueda
-
   const getActivities = countries.map((country) => {
     let array = [];
 

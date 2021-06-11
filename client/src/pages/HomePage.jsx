@@ -7,23 +7,18 @@ import { getCountries } from "../redux/ducks/countriesDuck";
 function HomePage() {
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.countries.countriesDB);
-  // const postActivity = useSelector((state) => state.activities.postActivity)
-  
+    
   useEffect(() => {
-    if (countries[0] === undefined) {
+    dispatch(getCountries());
+    return () => {
       dispatch(getCountries());
-    }
-  }, [dispatch,countries])
-
-  
-
-  // useEffect(() => {
-  //   dispatch(getCountries());
-  // }, [postActivity])
+    };
+  }, [dispatch])
 
   return (
     <div className="wrapper">
       <ListCountries reduxState={countries} reduxName="db" />
+      <button>Volver a cargar los paises</button>
     </div>
   );
 }
