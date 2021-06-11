@@ -1,11 +1,21 @@
-import React from 'react'
-import Keywords from './Keywords'
+import { useDispatch, useSelector } from "react-redux";
+import {
+  removeCountryForm,
+  addCountrySelected,
+} from "../../redux/ducks/countriesDuck";
 
-function Cards({countries}) {
+function Cards({ countries , state , changeState}) {
+  const dispatch = useDispatch();
+  const countriesForm = useSelector((state) => state.countries.countriesForm);
 
-  const filteredCountries = () => {
-
-  }
+  const handleState = (e) => {
+    dispatch(removeCountryForm(e.target.id, countriesForm));
+    dispatch(addCountrySelected(e.target.id, countriesForm));
+    changeState({
+      ...state,
+      countries: state.countries.concat(e.target.id)
+    })
+  };
 
   return (
     <div>
@@ -18,16 +28,23 @@ function Cards({countries}) {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>img</td>
-            <td>NameCuntry</td>
-            <td>button</td>
-          </tr>
+          {countries.map((country) => (
+            <tr key={country.id}>
+              <td>
+                <img src={country.image} alt="img not found" />
+              </td>
+              <td>{country.name}</td>
+              <td>
+                <button onClick={handleState} id={country.id}>
+                  Add country
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
-      <Keywords countriesAdded={filteredCountries} />
     </div>
-  )
+  );
 }
 
-export default Cards
+export default Cards;

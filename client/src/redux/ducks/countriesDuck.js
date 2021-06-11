@@ -15,13 +15,23 @@ const FILTER_ACTIVITIES_SEARCH = "FILTER_ACTIVITIES_SEARCH";
 const FILTER_ACTIVITIES_DB = "FILTER_ACTIVITIES_DB";
 const GET_COUNTRY_DETAILS = "GET_COUNTRY_DETAILS";
 const CLEAN_COUNTRY = "CLEAN_COUNTRY";
+const GET_COUNTRIES_FORM = "GET_COUNTRIES_FORM";
+const ADD_COUNTRY_FORM = "ADD_COUNTRY_FORM";
+const REMOVE_COUNTRY_FORM = "REMOVE_COUNTRY_FORM";
+const ADD_COUNTRY_SELECTED = "ADD_COUNTRY_SELECTED";
+const REMOVE_COUNTRY_SELECTED = "REMOVE_COUNTRY_SELECTED";
+const RESET_FORM = "RESET_FORM";
+// const ADD_CODE = "ADD_CODE";
+// const REMOVE_CODE = "REMOVE_CODE";
 
 //reducer
 
 const inicialState = {
   countriesDB: [],
   countriesSearch: [],
-  countryDetails: []
+  countryDetails: [],
+  countriesForm: [],
+  countriesSelected: [],
 };
 
 export default function reducer(state = inicialState, action) {
@@ -30,6 +40,7 @@ export default function reducer(state = inicialState, action) {
       return {
         ...state,
         countriesDB: action.payload,
+        countriesForm: [...action.payload],
       };
 
     case GET_COUNTRIES_SEARCH:
@@ -95,14 +106,50 @@ export default function reducer(state = inicialState, action) {
     case GET_COUNTRY_DETAILS:
       return {
         ...state,
-        countryDetails: action.payload
-      }
+        countryDetails: action.payload,
+      };
 
     case CLEAN_COUNTRY:
       return {
         ...state,
-        countryDetails: action.payload
-      }
+        countryDetails: action.payload,
+      };
+
+    case GET_COUNTRIES_FORM:
+      return {
+        ...state,
+        countriesForm: [...state.countriesDB],
+      };
+
+    case ADD_COUNTRY_FORM:
+      return {
+        ...state,
+        countriesForm: state.countriesForm.concat(action.payload),
+      };
+
+    case REMOVE_COUNTRY_FORM:
+      return {
+        ...state,
+        countriesForm: action.payload,
+      };
+
+    case ADD_COUNTRY_SELECTED:
+      return {
+        ...state,
+        countriesSelected: state.countriesSelected.concat(action.payload),
+      };
+
+    case REMOVE_COUNTRY_SELECTED:
+      return {
+        ...state,
+        countriesSelected: action.payload,
+      };
+
+    case RESET_FORM:
+      return {
+        ...state,
+        countriesSelected: []
+      };
 
     default:
       return state;
@@ -251,12 +298,12 @@ export function getCountryDetails(id) {
       const res = await axios.get(`http://localhost:3001/countries/${id}`);
       return dispatch({
         type: GET_COUNTRY_DETAILS,
-        payload: res.data
-      })
+        payload: res.data,
+      });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 }
 
 export function cleanCountry() {
@@ -265,3 +312,54 @@ export function cleanCountry() {
     payload: [],
   };
 }
+
+export function getCountriesForm() {
+  return {
+    type: GET_COUNTRIES_FORM,
+  };
+}
+
+export function addCountryForm(id, countries) {
+  const payload = countries.filter((country) => country.id === id);
+
+  console.log(payload);
+
+  return {
+    type: ADD_COUNTRY_FORM,
+    payload,
+  };
+}
+
+export function removeCountryForm(id, countries) {
+  const payload = countries.filter((country) => country.id !== id);
+
+  return {
+    type: REMOVE_COUNTRY_FORM,
+    payload,
+  };
+}
+
+export function addCountrySelected(id, countries) {
+  const payload = countries.filter((country) => country.id === id);
+
+  return {
+    type: ADD_COUNTRY_SELECTED,
+    payload,
+  };
+}
+
+export function removeCountrySelected(id, countries) {
+  const payload = countries.filter((country) => country.id !== id);
+  return {
+    type: REMOVE_COUNTRY_SELECTED,
+    payload,
+  };
+}
+
+export function reset() {
+  return {
+    type: RESET_FORM,
+  };
+}
+
+//TODO HACER FUNCTION UPDATE PARA LAS MINI CARD!!!

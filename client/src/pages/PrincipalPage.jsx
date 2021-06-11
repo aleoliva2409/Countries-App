@@ -6,7 +6,6 @@ import { getCountries } from "../redux/ducks/countriesDuck";
 function PrincipalPage() {
   const dispatch = useDispatch();
   
-
   useEffect(() => {
     dispatch(getCountries());
   }, [dispatch]);
