@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import s from "./Form.module.css"
 import Inputs from "./Inputs";
 import Search from "./Search";
 import Keywords from "./Keywords";
@@ -36,8 +37,10 @@ function Form({ countries }) {
   //TODO hacer un reseteo cuando se envie el form dispatch(getCountriesForm o getCountries)
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className={s.form__container}>
+      <form
+        className={s.form}
+        onSubmit={handleSubmit}>
         <Inputs state={form} changeState={setForm} />
         <Search
           countries={countries}
@@ -47,8 +50,8 @@ function Form({ countries }) {
           setSearch={setSearch}
         />
         <Keywords state={form} changeState={setForm} />
-        <div>
-          <button>Create</button>
+        <div className="btn__container">
+          <button className={s.btn} >Create</button>
         </div>
       </form>
     </div>

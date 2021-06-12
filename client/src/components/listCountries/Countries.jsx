@@ -1,28 +1,40 @@
-import { Link } from 'react-router-dom'
+import s from './ListCountries.module.css'
+import { Link } from "react-router-dom";
 
-function Countries({countries}) {
-  
+function Countries({ countries }) {
   return (
-    <div>
-      {countries ? (
+    <div className={s.countries__container}>
+      {countries[0] === undefined ? (
+        <p className={s.error__paragraph}>Countries not found</p>
+      ) : (
         countries.map((country) => (
-          <div key={country.id}>
-            <img src={country.image} alt="img not found" />
-            <h3>
-              <Link to={`/countries/${country.id}`} >{country.name}</Link>
-            </h3>
-            <h4>{country.continent}</h4>
+          <div
+            key={country.id}
+            className={s.card}
+          >
+            <div className={s.card__img}>
+              <img
+                src={country.image}
+                alt="img not found"
+                className={s.img}
+              />
+            </div>
+            <div className={s.card__text}>
+              <h3 className={s.card__name}>
+                <Link
+                  to={`/countries/${country.id}`}
+                  className={s.name__link}
+                >{country.name}</Link>
+              </h3>
+              <p className={s.card__paragraph}><span>Population: </span>{country.capital}</p>
+              <p className={s.card__paragraph}><span>Continent: </span>{country.continent}</p>
+              <p className={s.card__paragraph}><span>Population: </span>{country.population}</p>
+            </div>
           </div>
         ))
-      ) : (
-        <h3>countries not found</h3>
       )}
-      {/* <div>
-        <button>prev</button>
-        <button onClick={nextPage}>next</button>
-      </div> */}
     </div>
   );
 }
 
-export default Countries
+export default Countries;

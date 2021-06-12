@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
+import s from './ListCountries.module.css'
 import { useDispatch } from "react-redux";
 import {
   filterByContinent,
@@ -106,17 +107,23 @@ function FiltersOrders({ reduxName, countries ,change }) {
   }
 
   return (
-    <div>
-      <form onSubmit={sendFilter}>
-        <div>
-          <label htmlFor="filter">Filter by: </label>
+    <div className={s.form__container}>
+      <form className={s.form} onSubmit={sendFilter}>
+        <div className={s.div}>
+          <label 
+            htmlFor="filter"
+            className={s.label}
+          >Filter by: </label>
           <select
             name="filter"
             id="filter"
+            className={s.select}
             onChange={handleFilter}
             defaultValue="DEFAULT"
           >
-            <option value="DEFAULT" disabled>
+            <option
+              className={s.option}
+              value="DEFAULT" disabled>
               Select
             </option>
             <option value="continent">Continent</option>
@@ -124,11 +131,14 @@ function FiltersOrders({ reduxName, countries ,change }) {
           </select>
         </div>
         {filters.filter === "continent" && (
-          <div>
-            <label htmlFor="continent">Choose a continent : </label>
+          <div className={s.div}>
+            <label
+              className={s.label}
+              htmlFor="continent">Choose a continent : </label>
             <select
               name="continent"
               id="continent"
+              className={s.select}
               onChange={toNameFilter}
               defaultValue="DEFAULT"
             >
@@ -140,15 +150,19 @@ function FiltersOrders({ reduxName, countries ,change }) {
               <option value="Asia">Asia</option>
               <option value="Europe">Europe</option>
               <option value="Oceania">Oceania</option>
+              <option value="Polar">Polar</option>
             </select>
           </div>
         )}
         {filters.filter === "activity" && (
-          <div>
-            <label htmlFor="activity">Choose a activity: </label>
+          <div className={s.div}>
+            <label
+              className={s.label}
+              htmlFor="activity">Choose a activity: </label>
             <select
               name="activity"
               id="activity"
+              className={s.select}
               onChange={toNameFilter}
               defaultValue="DEFAULT"
             >
@@ -164,39 +178,51 @@ function FiltersOrders({ reduxName, countries ,change }) {
             </select>
           </div>
         )}
-        {filters.showFilter !== null && <button>Filter</button>}
+        {filters.showFilter !== null && <button className={s.btn}>Filter</button>}
       </form>
-      <form onSubmit={sendSort}>
-        <label htmlFor="sort">Sort by</label>
-        <select
-          name="sort"
-          id="sort"
-          onChange={handleSort}
-          defaultValue="DEFAULT"
-        >
-          <option value="DEFAULT" disabled>
-            Select
-          </option>
-          <option value="alphabetical">Alphabetical</option>
-          <option value="population">Population</option>
-        </select>
+      <form
+        className={s.form}
+        onSubmit={sendSort}>
+        <div className={s.div}>
+          <label
+            className={s.label}
+            htmlFor="sort">Sort by: </label>
+          <select
+            name="sort"
+            id="sort"
+            className={s.select}
+            onChange={handleSort}
+            defaultValue="DEFAULT"
+          >
+            <option value="DEFAULT" disabled>
+              Select
+            </option>
+            <option value="alphabetical">Alphabetical</option>
+            <option value="population">Population</option>
+          </select>
+        </div>
         {sorts.showSort !== null && (
-          <div>
-            <label htmlFor="typeSort">Choose: </label>
-            <select
-              name="typeSort"
-              id="typeSort"
-              onChange={toSort}
-              defaultValue="DEFAULT"
-            >
-              <option value="DEFAULT" disabled>
-                Select
-              </option>
-              <option value="ascendent">Ascendent</option>
-              <option value="descendent">Descendent</option>
-            </select>
-            <button>Sort</button>
-          </div>
+          <Fragment>
+            <div className={s.div}>
+              <label
+                className={s.label}
+                htmlFor="typeSort">Choose an option: </label>
+              <select
+                name="typeSort"
+                id="typeSort"
+                className={s.select}
+                onChange={toSort}
+                defaultValue="DEFAULT"
+              >
+                <option value="DEFAULT" disabled>
+                  Select
+                </option>
+                <option value="ascendent">Ascendent</option>
+                <option value="descendent">Descendent</option>
+              </select>
+            </div>
+            <button className={s.btn}>Sort</button>
+          </Fragment>
         )}
       </form>
     </div>

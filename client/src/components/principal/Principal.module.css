@@ -1,0 +1,112 @@
+.container {
+  /* background: url(../../img/principal1.jpg) no-repeat center center; */
+  min-height: 100vh;
+  background-image: url(../../img/principal1.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  animation-name: carousel;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-direction: alternate;
+  animation-delay: 3s;
+  overflow: hidden;
+}
+
+.container::before {
+  content: "";
+  width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background: rgb(32, 32, 32);
+  opacity: 0.5;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.title {
+  position: relative;
+  color: #fff;
+  opacity: 0.8;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  user-select: none;
+  animation-name: textMove;
+  animation-duration: 2s;
+  animation-delay: .5s;
+}
+
+.btn {
+  position: relative;
+  margin: .5rem 0;
+  padding: 0;
+  background: transparent;
+  border: 1.8px solid #c4c4c4;
+  border-radius: 2px;
+  cursor: pointer;
+  animation-name: btnMove;
+  animation-duration: 2s;
+  animation-delay: .5s;
+}
+
+.btn:hover {
+  opacity: 0.5;
+}
+
+.a {
+  display: block;
+  color: #fff;
+  padding: .625rem;
+  text-decoration: none;
+}
+
+@keyframes carousel {
+  0% {
+    background-image: url(../../img/principal1.jpg);
+  }
+  25% {
+    background-image: url(../../img/principal2.jpg);
+  }
+  75% {
+    background-image: url(../../img/principal3.jpg);
+  }
+  100% {
+    background-image: url(../../img/principal4.jpg);
+  }
+}
+
+@keyframes textMove {
+  0% {
+    right: 3000px;
+  }
+  50% {
+    right: -500px;
+  }
+  100% {
+    right: 0%;
+  }
+}
+
+@keyframes btnMove {
+  0% {
+    left: 3000px;
+  }
+  50% {
+    left: -500px;
+  }
+  100% {
+    left: 0%;
+  }
+}

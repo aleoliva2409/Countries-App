@@ -1,4 +1,5 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
+import s from "./Form.module.css"
 import Cards from "./Cards";
 
 function Search({ countries , state , changeState, search, setSearch }) {
@@ -16,12 +17,14 @@ function Search({ countries , state , changeState, search, setSearch }) {
     return filteredCountries.slice(currentPage, currentPage + 5);
   };
 
-  const prevPage = () => {
+  const prevPage = (e) => {
     setCurrentPage(currentPage - 5);
+    e.preventDefault();
   };
 
-  const nextPage = () => {
+  const nextPage = (e) => {
     setCurrentPage(currentPage + 5);
+    e.preventDefault();
   };
 
   const prevBtn = () => {
@@ -49,24 +52,39 @@ function Search({ countries , state , changeState, search, setSearch }) {
     e.preventDefault();
   };
   return (
-    <div>
-      <div>
-        <label htmlFor="country">Search</label>
+    <div className={s.search__container}>
+      <div className={`${s.search}`}>
+        <label className={`${s.search__label}`} htmlFor="country">
+          Search:{" "}
+        </label>
         <input
           type="text"
           id="country"
           name="country"
+          className={`${s.input} ${s.search__input}`}
           onChange={handleSearch}
           value={search}
           placeholder="Search country..."
         />
       </div>
-      <Cards countries={paginations()} state={state} changeState={changeState} />
-      <div>
-        <button onClick={prevPage} disabled={prevBtn()}>
+      <Cards
+        countries={paginations()}
+        state={state}
+        changeState={changeState}
+      />
+      <div className={s.btn__paginations}>
+        <button
+          className={`${s.btn} ${prevBtn() && s.btn__disabled}`}
+          onClick={prevPage}
+          disabled={prevBtn()}
+        >
           prev
         </button>
-        <button onClick={nextPage} disabled={nextBtn()}>
+        <button
+          className={`${s.btn} ${nextBtn() && s.btn__disabled}`}
+          onClick={nextPage}
+          disabled={nextBtn()}
+        >
           next
         </button>
       </div>

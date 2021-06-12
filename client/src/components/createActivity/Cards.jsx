@@ -1,3 +1,4 @@
+import s from './Form.module.css'
 import { useDispatch, useSelector } from "react-redux";
 import {
   removeCountryForm,
@@ -18,24 +19,26 @@ function Cards({ countries , state , changeState}) {
   };
 
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Flag</th>
-            <th>Name</th>
-            <th>Add</th>
+    <div className={s.table__container}>
+      <table className={s.table}>
+        <thead className={s.table__head}>
+          <tr className={s.table__row__head}>
+            <th className={s.table__cell_head}>Flag</th>
+            <th className={s.table__cell_head}>Name</th>
+            <th className={s.table__cell_head}>Add</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className={s.table__body}>
           {countries.map((country) => (
-            <tr key={country.id}>
-              <td>
-                <img src={country.image} alt="img not found" />
+            <tr key={country.id} className={s.table__row}>
+              <td className={s.table__cell__img}>
+                <div className={s.table__img}>
+                  <img  src={country.image} alt="img not found" />
+                </div>
               </td>
-              <td>{country.name}</td>
-              <td>
-                <button onClick={handleState} id={country.id}>
+              <td className={s.table__cell}>{country.name}</td>
+              <td className={s.table__cell}>
+                <button className={`${s.btn}`} onClick={handleState} id={country.id}>
                   Add country
                 </button>
               </td>

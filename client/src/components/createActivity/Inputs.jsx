@@ -1,4 +1,5 @@
 import React from 'react'
+import s from './Form.module.css'
 
 function Inputs({state, changeState}) {
 
@@ -17,43 +18,46 @@ function Inputs({state, changeState}) {
   }
 
   return (
-    <div>
-      <div>
-        <label htmlFor="name">Name Activity:</label>
+    <div className={s.inputs__container}>
+      <div className={s.input__container}>
+        <label className={s.label} htmlFor="name">Name Activity:</label>
         <input
           type="text"
           id="name"
           name="name"
+          className={s.input}
           onChange={handleForm}
           value={state.name}
           placeholder="Name activity..."
         />
       </div>
-      <div>
-        <label htmlFor="difficulty">Difficulty:</label>
+      <div className={s.input__container}>
+        <label className={s.label} htmlFor="difficulty">Difficulty:</label>
         <input
           type="number"
           id="difficulty"
           name="difficulty"
+          className={s.input}
           onChange={handleForm}
           value={state.difficulty}
           placeholder="1 to 5"
         />
       </div>
-      <div>
-        <label htmlFor="duration">Duration:</label>
+      <div className={s.input__container}>
+        <label className={s.label} htmlFor="duration">Duration:</label>
         <input
           type="text"
           id="duration"
           name="duration"
+          className={s.input}
           onChange={handleForm}
           value={state.duration}
           placeholder="15 days , 3 weeks , 2 months"
         />
       </div>
-      <div>
-        <p>Season:</p>
-        <div>
+      <p className={s.label__p}>Season:</p>
+      <div className={s.inputs__container_radio}>
+        <div className={s.input__radio}>
           <input
             type="radio"
             id="spring"
@@ -61,9 +65,9 @@ function Inputs({state, changeState}) {
             onChange={handleForm}
             value="spring"
           />
-          <label htmlFor="spring">Spring</label>
+          <label className={s.label__radio} htmlFor="spring">Spring</label>
         </div>
-        <div>
+        <div className={s.input__radio}>
           <input
             type="radio"
             id="summer"
@@ -71,9 +75,9 @@ function Inputs({state, changeState}) {
             onChange={handleForm}
             value="summer"
           />
-          <label htmlFor="summer">Summer</label>
+          <label className={s.label__radio} htmlFor="summer">Summer</label>
         </div>
-        <div>
+        <div className={s.input__radio}>
           <input
             type="radio"
             id="winter"
@@ -81,9 +85,9 @@ function Inputs({state, changeState}) {
             onChange={handleForm}
             value="winter"
           />
-          <label htmlFor="winter">Winter</label>
+          <label className={s.label__radio} htmlFor="winter">Winter</label>
         </div>
-        <div>
+        <div className={s.input__radio}>
           <input
             type="radio"
             id="fall"
@@ -91,7 +95,7 @@ function Inputs({state, changeState}) {
             onChange={handleForm}
             value="fall"
           />
-          <label htmlFor="fall">Fall</label>
+          <label className={s.label__radio} htmlFor="fall">Fall</label>
         </div>
       </div>
     </div>

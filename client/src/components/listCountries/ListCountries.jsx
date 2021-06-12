@@ -9,9 +9,9 @@ function ListCountries({ reduxState, reduxName }) {
 
   useEffect(() => {
     return () => {
-      setCurrentPage(0)
-    }
-  }, [])
+      setCurrentPage(0);
+    };
+  }, []);
 
   const paginations = () => {
     return reduxState.slice(currentPage, currentPage + 10);
@@ -49,8 +49,8 @@ function ListCountries({ reduxState, reduxName }) {
   };
 
   return (
-    <div className={`wrapper ${s.container}`}>
-      <div className={s.btn__container}>
+    <div className={s.container}>
+      <div className={s.btn__showFilters}>
         <button className={s.btn} onClick={showFilters}>
           Filters and Sorts
         </button>
@@ -63,11 +63,19 @@ function ListCountries({ reduxState, reduxName }) {
         />
       )}
       <Countries countries={paginations()} />
-      <div className={s.btn__container}>
-        <button className={s.btn} onClick={prevPage} disabled={prevBtn()}>
+      <div className={s.btn__paginations}>
+        <button
+          className={`${s.btn} ${prevBtn() && s.btn__disabled}`}
+          onClick={prevPage}
+          disabled={prevBtn()}
+        >
           prev
         </button>
-        <button className={s.btn} onClick={nextPage} disabled={nextBtn()}>
+        <button
+          className={`${s.btn} ${nextBtn() && s.btn__disabled}`}
+          onClick={nextPage}
+          disabled={nextBtn()}
+        >
           next
         </button>
       </div>

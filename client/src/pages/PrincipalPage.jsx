@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getCountries } from "../redux/ducks/countriesDuck";
+import Principal from "../components/principal/Principal"
 
 function PrincipalPage() {
   const dispatch = useDispatch();
@@ -11,11 +11,8 @@ function PrincipalPage() {
   }, [dispatch]);
 
   return (
-    <div className="wrapper">
-      <h1>Principal Page</h1>
-      <button>
-        <Link to="/home">Go Home</Link>
-      </button>
+    <div>
+      <Principal />
     </div>
   );
 }
