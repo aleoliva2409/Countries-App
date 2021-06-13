@@ -32,7 +32,6 @@ function ActivitiesPage() {
 
   return (
     <div className="wrapper">
-      <h1>Activities Page</h1>
       <ListActivities activities={activities} />
     </div>
   );

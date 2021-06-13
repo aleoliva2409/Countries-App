@@ -1,4 +1,7 @@
 import React from "react";
+import s from './Form.module.css'
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import {
   removeCountrySelected,
@@ -18,21 +21,28 @@ function Keywords({state,changeState}) {
       ...state,
       countries: state.countries.filter(country => country.id !== e.target.id)
     })
+    e.preventDefault();
   };
 
   return (
-    <div>
-      <h4>Selected Countries</h4>
-      <div>
+    <div className={s.keywords__container}>
+      <h4 className={s.keywords__title}>Selected Countries</h4>
+      <div className={s.keywords__cards}>
         {countriesSelected[0] === undefined ? (
           <p>Select countries</p>
         ) : (
           countriesSelected.map((country, index) => (
-            <div key={index}>
-              <img src={country.image} alt="img not found" />
-              <p>{country.name}</p>
-              <button onClick={remove} id={country.id}>
-                X
+            <div className={s.keywords__card} key={index}>
+              <div className={s.keywords__card__img}>
+                <img src={country.image} alt="img not found" />
+              </div>
+              <p className={s.keywords__card__text}>{country.name}</p>
+              <button
+                className={s.keywords__card__btn}
+                onClick={remove}
+                id={country.id}
+              >
+              x
               </button>
             </div>
           ))

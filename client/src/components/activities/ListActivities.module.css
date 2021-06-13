@@ -1,0 +1,28 @@
+.listActivities__container {
+  width: 100%;
+  margin: 40px 0;
+  color: #fff;
+}
+
+.listActivities__title {
+  text-align: center;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+
+.listActivities__activities {
+  width: 55%;
+  margin: 30px auto;
+  box-shadow: 5px 5px 15px 5px #141e27;
+  border-radius: 5px;
+  background-color: var(--elements-dark);
+}
+
+.activities__title {
+  padding: 10px;
+  font-size: 20px;
+}
+
+.activities__p {
+  padding: 10px;
+}

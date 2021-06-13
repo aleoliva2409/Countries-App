@@ -38,7 +38,7 @@ function Cards({ countries , state , changeState}) {
               </td>
               <td className={s.table__cell}>{country.name}</td>
               <td className={s.table__cell}>
-                <button className={`${s.btn}`} onClick={handleState} id={country.id}>
+                <button className={`${s.btn} ${s.btn__add}`} onClick={handleState} id={country.id}>
                   Add country
                 </button>
               </td>

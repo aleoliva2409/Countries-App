@@ -10,10 +10,11 @@ function Inputs({state, changeState}) {
         [e.target.name]: e.target.valueAsNumber
       });
     } else {
+      
       changeState({
         ...state,
-        [e.target.name]: e.target.value
-      })
+        [e.target.name]: e.target.value,
+      });
     }
   }
 

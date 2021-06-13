@@ -46,12 +46,23 @@ export function getActivities() {
 export function postActivity(payload) {
   return async function (dispatch) {
     try {
-      const res = await axios.post("http://localhost:3001/activity", payload);
+
+      const {name,difficulty,duration,season,countries} = payload;
+
+      const data = {
+        name: name.toLowerCase(),
+        difficulty,
+        duration: duration.toLowerCase(),
+        season,
+        countries
+      }
+
+      const res = await axios.post("http://localhost:3001/activity", data);
       return dispatch({
         type: POST_ACTIVITY,
         payload: {
           resp: res.data,
-          data: payload,
+          data: data,
         },
       });
     } catch (error) {

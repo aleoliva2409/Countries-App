@@ -15,11 +15,15 @@ function HomePage() {
     };
   }, [dispatch])
 
+  const reload = () => {
+    dispatch(getCountries());
+  }
+
   return (
     <div className="wrapper">
       <ListCountries reduxState={countries} reduxName="db" />
       <div className={`btn__container ${countries[0] === undefined ? "d__none" : "d__block"}`}>
-        <button className="btn">Volver a cargar los paises</button>
+        <button className="btn" onClick={reload}>Volver a cargar los paises</button>
       </div>
     </div>
   );

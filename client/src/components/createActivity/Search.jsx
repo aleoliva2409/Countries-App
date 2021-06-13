@@ -64,7 +64,7 @@ function Search({ countries , state , changeState, search, setSearch }) {
           className={`${s.input} ${s.search__input}`}
           onChange={handleSearch}
           value={search}
-          placeholder="Search country..."
+          placeholder="Search countries..."
         />
       </div>
       <Cards
