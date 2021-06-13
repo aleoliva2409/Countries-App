@@ -17,8 +17,17 @@
 .nav__btn {
   background: none;
   border: none;
-  font-size: 1.3rem;
+  color: #fff;
+  font-size: 1.8rem;
+  box-shadow: 3px 3px 10px 5px #141e27;
+  padding: 8px 13px;
+  border-radius: 4px;
   display: none;
+
+}
+
+.nav__btn:active {
+  box-shadow: inset 1px 2px 6px 18px var(--bg-dark);
 }
 
 .nav__menu {
@@ -109,10 +118,66 @@
   border-radius: .3125rem;
   border: none;
   background-color: var(--elements-dark);
-  box-shadow: 5px 5px 15px 5px #141e27;
+  box-shadow: 3px 3px 10px 5px #141e27;
   cursor: pointer;
 }
 
 .btn:active {
   box-shadow: inset 1px 2px 6px 18px var(--bg-dark);
+}
+
+
+@media screen and (max-width: 768px) {
+  .nav {
+    padding: 15px 0;
+  }
+
+  .nav__btn {
+    display: block;
+  }
+
+  .nav__menu {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background-color: var(--elements-dark);
+    top: 80px;
+    left: 0;
+    padding: 0 30px;
+  }
+
+  .form {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .input {
+    width: 60%;
+    padding: 13px;
+  }
+
+  .btn {
+    padding: 12px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .form {
+    width: 80%;
+  }
+
+  .nav__menu {
+    padding: 0 10px;
+  }
+
+  .btn {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .nav__btn {
+    padding: 5px 10px;
+  }
 }

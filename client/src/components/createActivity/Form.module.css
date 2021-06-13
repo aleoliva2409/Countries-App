@@ -251,3 +251,117 @@
 .keywords__card__btn:hover {
   opacity: 0.7;
 }
+
+@media screen and (max-width: 375px) {
+  .form {
+    flex-basis: 90%;
+  }
+
+  .form__title {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+
+  .input__container {
+  margin: 20px 0;
+}
+
+  .label {
+    font-size: 17px;
+    width: 80%;
+  }
+
+  .input {
+    margin: .5rem 0;
+    padding: .5rem;
+    font-size: .8125rem;
+    width: 80%;
+  }
+
+  .inputs__container_radio {
+  justify-content: space-around;
+  width: 90%
+}
+
+  .label__p {
+    font-size: 17px;
+    margin: 10px 0;
+  }
+
+  .label__radio {
+    margin: 5px;
+    font-size: 13px;
+  }
+
+  .input__radio {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  .search {
+    margin: 20px 0;
+  }
+
+  .search__label {
+    margin: 0 10px;
+    font-size: 17px;
+  }
+
+  .search__input {
+    width: 60%
+  }
+
+  .btn__paginations {
+    margin: 20px 0;
+  }
+
+  .table {
+    width: 90%;
+  }
+
+
+/*    problemas con tabla!!!!        */
+
+  .table__cell_head {
+    padding: 10px 0;
+  }
+
+  .table__cell {
+    padding: 10px 0;
+  }
+
+  .table__row {
+    height: 30px;
+  }
+
+  .table__cell__img {
+    display: flex;
+    align-items: center;
+  } 
+
+  .table__img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .table__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+.btn__add {
+  background: #409c40;
+}
+
+.btn__add:hover {
+  background-color: #65af65;
+}
+
+.btn__add:active {
+  background-color: #65af65;
+  box-shadow: 1px 2px 4px 4px #65af65;
+}
+
+}

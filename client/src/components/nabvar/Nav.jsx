@@ -3,14 +3,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown , faBars } from "@fortawesome/free-solid-svg-icons";
 import s from "./Navbar.module.css";
 import Search from "./Search";
+import { useState } from "react";
 
 function Nav() {
+
+  const [menu, setMenu] = useState("flex")
+
+  const showMenu = () => {
+    if(menu === "block") {
+      setMenu(false)
+    } else {
+      setMenu(true)
+    }
+  }
+
   return (
     <nav className={`${s.nav} wrapper`}>
-      <button className={s.nav__btn}>
+      <button onClick={showMenu} className={`${s.nav__btn}`} >
         <FontAwesomeIcon icon={faBars} className={s.btn__icon} />
       </button>
-      <ul className={s.nav__menu}>
+      <ul className={`${s.nav__menu}`}>
         <li className={s.menu__item}>
           <NavLink to="/home">Home</NavLink>
         </li>

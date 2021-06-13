@@ -130,3 +130,33 @@
 .error__paragraph {
   margin: 40px 0;
 }
+
+
+@media screen and (max-width: 768px) {
+  .btn__paginations {
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .countries__container {
+    padding: 10px;
+  }
+
+  .card {
+    flex-basis: 18.75rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .card {
+    flex-basis: 17.5rem;
+  }
+}
