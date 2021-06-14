@@ -32,7 +32,7 @@
   list-style: none
   font-size: 1rem
   z-index: 20
-  box-shadow: 2px 2px 7px 3px #141e27
+  box-shadow: 2px 2px 7px 3px c.$black
   border-radius: 3px
   padding: 0
 
@@ -71,15 +71,13 @@
 .btn
   @include mixin.btn
   padding: .5em .7em
-  box-shadow: 3px 3px 5px 1px #141e27
+  box-shadow: 3px 3px 5px 1px c.$black
 
   &:active
     box-shadow: inset 1px 2px 6px 18px c.$bg-dark
 
 .btn__icon
   font-size: 1.2em
-
-  
 
 .search
   flex-basis: 100%

@@ -1,3 +1,4 @@
+import s from '../../sass/createActivity/Form.module.sass'
 import React, { useState } from "react";
 import Inputs from "./Inputs";
 import Search from "./Search";
@@ -34,9 +35,9 @@ function Form({ countries }) {
   };
 
   return (
-    <div className="">
-      <form className="" onSubmit={handleSubmit}>
-        <h1 className="">Create Activities</h1>
+    <div className={s.form__container}>
+      <form className={s.form} onSubmit={handleSubmit}>
+        <h1 className={s.form__title}>Create Activities</h1>
         <Inputs state={form} changeState={setForm} />
         <Search
           countries={countries}
@@ -46,8 +47,8 @@ function Form({ countries }) {
           setSearch={setSearch}
         />
         <Keywords state={form} changeState={setForm} />
-        <div className="btn__container">
-          <button className="">Create</button>
+        <div className={s.btn__container}>
+          <button className={s.btn}>Create</button>
         </div>
       </form>
     </div>

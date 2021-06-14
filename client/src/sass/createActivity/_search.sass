@@ -1,0 +1,38 @@
+@use '../vars/_colors' as c
+@use '../vars/_mixins' as mixin
+
+.search__container
+  font-size: 1rem
+  margin: 3em 0
+
+.search
+  display: flex
+  justify-content: center
+  align-items: center
+  margin: .8rem 0
+
+  &__label
+    font-size: 1.45em
+    margin: 0 .7rem
+
+  &__input
+    @include mixin.input
+    font-size: 1.35em
+    padding: .55em .65em
+    width: 65%
+
+.btn__paginations
+  display: flex
+  justify-content: space-around
+  align-items: center
+  margin: 2em 0
+
+.btn
+  @include mixin.btn
+
+  &__disabled
+    color: #777777
+    background-color: c.$black
+
+  &:active
+    box-shadow: inset 1px 2px 6px 18px c.$black

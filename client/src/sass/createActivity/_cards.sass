@@ -1,0 +1,52 @@
+@use '../vars/_colors' as c
+@use '../vars/_mixins' as mixin
+
+
+.section__container
+  margin: 2rem 0
+  width: 100%
+
+.section 
+  font-size: 1rem
+  display: flex
+  align-items: center
+  justify-content: space-evenly
+  padding: .8em
+
+  &__img
+    flex-basis: 30%
+    display: flex
+    justify-content: center
+
+
+  &__img img
+    width: 3.5em
+    height: 3.5em
+    border-radius: 50%
+    object-fit: cover
+
+  &__name
+    display: flex
+    justify-content: center
+    text-align: center
+    flex-basis: 30%
+    font-size: 1.3em
+
+  &__btn
+    display: flex
+    justify-content: center
+    flex-basis: 30%
+
+.btn__add
+  @include mixin.btn
+  background-color: #409c40
+  padding: .4em .4em // cambiar para 375px
+  // padding: .6em .5em
+  font-size: 1.15em
+
+  &:hover
+    background-color: #65af65
+  
+  &:active
+    background-color: #65af65
+    box-shadow: 1px 2px 4px 4px #65af65

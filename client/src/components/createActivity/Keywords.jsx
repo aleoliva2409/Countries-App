@@ -1,3 +1,4 @@
+import s from '../../sass/createActivity/Form.module.sass'
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -22,20 +23,20 @@ function Keywords({state,changeState}) {
   };
 
   return (
-    <div className="">
-      <h4 className="">Selected Countries</h4>
-      <div className="">
+    <div className={s.keywords__container}>
+      <h4 className={s.keywords__title}>Selected Countries</h4>
+      <div className={s.keywords__cards}>
         {countriesSelected[0] === undefined ? (
-          <p>Select countries</p>
+          <p className={s.keywords__card__text}>Select countries</p>
         ) : (
           countriesSelected.map((country, index) => (
-            <div className="" key={index}>
-              <div className="">
+            <div className={s.keywords__card} key={index}>
+              <div className={s.keywords__card__img}>
                 <img src={country.image} alt="img not found" />
               </div>
-              <p className="">{country.name}</p>
+              <p className={s.keywords__card__text}>{country.name}</p>
               <button
-                className=""
+                className={s.keywords__card__btn}
                 onClick={remove}
                 id={country.id}
               >

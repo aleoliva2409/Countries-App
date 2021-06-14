@@ -1,0 +1,43 @@
+@use '../vars/_colors' as c
+@use '../vars/_mixins' as mixin
+
+.inputs__container
+  margin: 1.6em 0
+  font-size: 1rem
+  display: flex
+  align-items: center
+  flex-direction: column
+
+.input__container
+  margin: .9em 0
+  width: 85%
+  display: flex
+  flex-direction: column
+
+.label
+  font-size: 1.3em
+  margin: .6em 0
+
+.input
+  @include mixin.input
+  font-size: 1.35em
+  padding: .55em .65em
+
+.inputs__container__radio
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+  font-size: 1rem
+
+.input__container__radio
+  flex-basis: 40%
+  display: flex
+  // justify-content: space-evenly
+  align-items: center
+  margin: .6rem 0
+
+.input__container__radio input
+  margin: 0 5px
+
+.label__radio
+  font-size: 1.1em

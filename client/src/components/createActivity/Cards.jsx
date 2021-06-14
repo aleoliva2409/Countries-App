@@ -1,3 +1,4 @@
+import s from '../../sass/createActivity/Form.module.sass'
 import { useDispatch, useSelector } from "react-redux";
 import {
   removeCountryForm,
@@ -18,17 +19,17 @@ function Cards({ countries , state , changeState}) {
   };
 
   return (
-    <div className="section__container">
+    <div className={s.section__container}>
       {countries.map((country) => (
-        <section key={country.id} className="section">
-            <div className="section__img">
+        <section key={country.id} className={s.section}>
+            <div className={s.section__img}>
               <img src={country.image} alt="img not found" />
           </div>
-          <div className="section__name">
+          <div className={s.section__name}>
             <p>{country.name}</p>
           </div>
-          <div className="section__btn">
-            <button className="btn btn__add" onClick={handleState} id={country.id}>
+          <div className={s.section__btn}>
+            <button className={`${s.btn__add}`} onClick={handleState} id={country.id}>
               Add country
             </button>
           </div>
