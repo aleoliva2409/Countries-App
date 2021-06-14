@@ -1,0 +1,48 @@
+@use '../vars/_colors' as c
+  
+.listActivities
+  font-size: 1rem
+  margin-top: 4em
+  color: #fff
+
+.title
+  text-align: center
+  letter-spacing: 1px
+  margin-bottom: 1.8em
+
+.activities
+  width: 80%
+  margin: 3em auto
+  padding: 1em
+  box-shadow: 5px 5px 15px 5px #141e27
+  border-radius: 5px
+  background-color: c.$elements-dark
+  font-size: 1rem
+
+  &__title
+    padding: .7em
+    font-size: 1.7em
+    margin: 0
+
+  &__paragraph
+    padding: .8em 1.3em
+    margin: 0
+    font-size: 1.2em
+
+@media screen and (min-width: 576px)
+  .activities
+    &__title
+      padding: .9em
+      font-size: 1.9em
+
+    &__paragraph
+      padding: .8em 1.3em
+      font-size: 1.5em
+
+@media screen and (min-width: 992px)
+  .activities
+    width: 65%
+
+@media screen and (min-width: 1200px)
+  .activities
+    width: 50%

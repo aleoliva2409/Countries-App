@@ -1,4 +1,4 @@
-import s from './ListCountries.module.css'
+import s from '../../sass/listCountries/ListCountries.module.sass'
 import { Link } from "react-router-dom";
 
 function Countries({ countries }) {
@@ -20,7 +20,7 @@ function Countries({ countries }) {
               />
             </div>
             <div className={s.card__text}>
-              <h3 className={s.card__name}>
+              <h3>
                 <Link
                   to={`/countries/${country.id}`}
                   className={s.name__link}

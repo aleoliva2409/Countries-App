@@ -1,5 +1,5 @@
+import s from '../../sass/notFound/NotFound.module.sass'
 import React from 'react'
-import s from './NotFound.module.css'
 
 function NotFound() {
   return (

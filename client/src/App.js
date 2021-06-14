@@ -1,4 +1,3 @@
-import "./index.scss";
 import { useLocation } from "react-router-dom";
 import Routes from "./routes/Routes";
 import Navbar from "./components/nabvar/Navbar"

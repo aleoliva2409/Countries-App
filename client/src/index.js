@@ -1,4 +1,4 @@
-import "./index.scss";
+import "./sass/index.sass";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux"

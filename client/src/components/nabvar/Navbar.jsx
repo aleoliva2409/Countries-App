@@ -1,13 +1,12 @@
-import Nav from './Nav'
-import s from './Navbar.module.css'
+import s from "../../sass/navbar/Navbar.module.sass";
+import Nav from "./Nav";
 
-function Navbar({display}) {
-
+function Navbar({ display }) {
   return (
-    <header className={s.header} style={{display: display}}>
+    <header className={`${s.header}`} style={{ display: display }}>
       <Nav />
     </header>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

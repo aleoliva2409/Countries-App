@@ -1,0 +1,156 @@
+@use '../vars/_colors' as c
+  
+@media screen and (min-width: 375px)
+
+  .logo
+    justify-content: center
+
+    &__text
+      padding: .3em
+      font-size: 2.7em
+
+  .menu
+    right: 3.9em
+
+  .form
+    padding: .7em
+    width: 70%
+
+  .form__input
+    padding: .6em
+    padding-right: 2.5em
+    width: 100%
+
+@media screen and (min-width: 425px)
+  .menu
+    right: 4.7em
+
+
+@media screen and (min-width: 576px)
+  .logo
+    justify-content: center
+    flex-basis: 80%
+    &__text
+      padding: .3em
+      font-size: 3.5em
+
+  .menu
+    right: 2.7em
+    top: 4em
+    font-size: 1.3em
+
+  .menu__btn
+    flex-basis: 20%
+
+  .btn
+    padding: .7em .9em
+
+  .btn__icon
+    font-size: 1.7em
+
+  .form
+    padding: .7em
+    width: 65%
+
+  .form__input
+    padding: .8em
+    padding-right: 2.6em
+    width: 100%
+
+  .form__btn
+    top: .7em
+    right: .7em
+
+@media screen and (min-width: 768px)
+  .logo
+    flex-basis: 60%
+
+  .menu__btn
+    justify-content: flex-end
+    flex-basis: 25%
+
+  .menu
+    // display: none
+    right: 6.7em
+    top: 3em
+    font-size: 1.7rem
+
+  .form__input
+    font-size: 1.5rem
+    padding: 1em
+    padding-right: 2.9em
+  
+  .form__btn
+    box-shadow: none
+    top: 1.2em
+    right: 1em
+    padding: .4em
+
+@media screen and (min-width: 992px)
+
+  .header
+
+  .nav
+    position: relative
+
+  .logo
+    flex-basis: 33%
+
+  .menu
+    flex-basis: 33%
+    position: static
+    top: 0
+    right: 0
+    display: flex
+    justify-content: center
+    box-shadow: none
+    margin: 0
+
+  .list__item 
+    border-radius: 5px
+
+  .list__item:hover, .subMenu__list__item:hover
+    background-color: #ffffff4d
+
+  .item__link
+    padding: .5em .5em
+
+    &__btn:hover &__icon
+      transform: rotate(180deg)
+
+    &__icon
+    margin: 0
+
+  .menu__btn
+    display: none
+
+  .dropdown
+    position: relative
+    padding: 0
+
+  .subMenu
+    display: none
+    position: absolute
+    left: 0
+    right: 0
+    padding: 0
+    text-align: left
+    background-color: c.$elements-dark
+    border: 1px solid c.$bg-dark
+    border-radius: 3px
+
+  .subMenu__list__item
+    padding: 0
+
+  .dropdown:hover .subMenu
+    display: block
+
+  .search
+    flex-basis: 33%
+  
+  .form
+    width: 100%
+
+@media screen and (min-width: 1920px)
+  .form
+    width: 70%

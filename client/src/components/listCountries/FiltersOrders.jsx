@@ -1,5 +1,5 @@
+import s from '../../sass/listCountries/ListCountries.module.sass'
 import React, { useState, Fragment } from "react";
-import s from './ListCountries.module.css'
 import { useDispatch } from "react-redux";
 import {
   filterByContinent,
@@ -109,11 +109,7 @@ function FiltersOrders({ reduxName, countries ,change }) {
   return (
     <div className={s.form__container}>
       <form className={s.form} onSubmit={sendFilter}>
-        <div className={s.div}>
-          <label 
-            htmlFor="filter"
-            className={s.label}
-          >Filter by: </label>
+        {/* <div className=""> */}
           <select
             name="filter"
             id="filter"
@@ -122,19 +118,15 @@ function FiltersOrders({ reduxName, countries ,change }) {
             defaultValue="DEFAULT"
           >
             <option
-              className={s.option}
               value="DEFAULT" disabled>
-              Select
+              Filter by 
             </option>
             <option value="continent">Continent</option>
             <option value="activity">Activity</option>
           </select>
-        </div>
+        {/* </div> */}
         {filters.filter === "continent" && (
-          <div className={s.div}>
-            <label
-              className={s.label}
-              htmlFor="continent">Choose a continent : </label>
+          // <div className="">
             <select
               name="continent"
               id="continent"
@@ -143,7 +135,7 @@ function FiltersOrders({ reduxName, countries ,change }) {
               defaultValue="DEFAULT"
             >
               <option value="DEFAULT" disabled>
-                Select
+                Choose
               </option>
               <option value="Africa">Africa</option>
               <option value="Americas">Americas</option>
@@ -152,13 +144,10 @@ function FiltersOrders({ reduxName, countries ,change }) {
               <option value="Oceania">Oceania</option>
               <option value="Polar">Polar</option>
             </select>
-          </div>
+          // </div>
         )}
         {filters.filter === "activity" && (
-          <div className={s.div}>
-            <label
-              className={s.label}
-              htmlFor="activity">Choose a activity: </label>
+          // <div className="">
             <select
               name="activity"
               id="activity"
@@ -167,7 +156,7 @@ function FiltersOrders({ reduxName, countries ,change }) {
               defaultValue="DEFAULT"
             >
               <option value="DEFAULT" disabled>
-                Select
+                Choose
               </option>
               {activities &&
                 activities.map((act, i) => (
@@ -176,17 +165,14 @@ function FiltersOrders({ reduxName, countries ,change }) {
                   </option>
                 ))}
             </select>
-          </div>
+          // </div>
         )}
         {filters.showFilter !== null && <button className={s.btn}>Filter</button>}
       </form>
       <form
         className={s.form}
         onSubmit={sendSort}>
-        <div className={s.div}>
-          <label
-            className={s.label}
-            htmlFor="sort">Sort by: </label>
+        {/* <div className=""> */}
           <select
             name="sort"
             id="sort"
@@ -195,18 +181,15 @@ function FiltersOrders({ reduxName, countries ,change }) {
             defaultValue="DEFAULT"
           >
             <option value="DEFAULT" disabled>
-              Select
+              Sort by
             </option>
             <option value="alphabetical">Alphabetical</option>
             <option value="population">Population</option>
           </select>
-        </div>
+        {/* </div> */}
         {sorts.showSort !== null && (
           <Fragment>
-            <div className={s.div}>
-              <label
-                className={s.label}
-                htmlFor="typeSort">Choose an option: </label>
+            {/* <div className=""> */}
               <select
                 name="typeSort"
                 id="typeSort"
@@ -215,12 +198,12 @@ function FiltersOrders({ reduxName, countries ,change }) {
                 defaultValue="DEFAULT"
               >
                 <option value="DEFAULT" disabled>
-                  Select
+                  Choose
                 </option>
                 <option value="ascendent">Ascendent</option>
                 <option value="descendent">Descendent</option>
               </select>
-            </div>
+            {/* </div> */}
             <button className={s.btn}>Sort</button>
           </Fragment>
         )}

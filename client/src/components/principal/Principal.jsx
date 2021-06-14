@@ -1,6 +1,7 @@
+import s from '../../sass/principal/Principal.module.sass'
 import React from "react";
 import { Link } from "react-router-dom"; // * imbrl
-import s from "./Principal.module.css";
+
 
 function Principal() {
   return (
@@ -8,7 +9,7 @@ function Principal() {
       <div className={`wrapper ${s.content}`}>
         <h1 className={s.title}>Welcome</h1>
         <button className={s.btn}>
-          <Link className={s.a} to="/home">Go Home</Link>
+          <Link className={s.btn__link} to="/home">Go Home</Link>
         </button>
       </div>
     </div>

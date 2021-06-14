@@ -1,5 +1,5 @@
+import s from '../../sass/listCountries/ListCountries.module.sass'
 import React, { useState, useEffect } from "react";
-import s from "./ListCountries.module.css";
 import Countries from "./Countries";
 import FiltersOrders from "./FiltersOrders";
 
@@ -49,9 +49,9 @@ function ListCountries({ reduxState, reduxName }) {
   };
 
   return (
-    <div className={s.container}>
-      <div className={s.btn__showFilters}>
-        <button className={s.btn} onClick={showFilters}>
+    <div className={`${s.container} wrapper`}>
+      <div className={s.filters__container}>
+        <button className={s.btn__showFilters} onClick={showFilters}>
           Filters and Sorts
         </button>
       </div>

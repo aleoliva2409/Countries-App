@@ -1,8 +1,10 @@
-import s from "./Navbar.module.css";
+import s from '../../sass/navbar/Navbar.module.sass';
 import { Redirect } from "react-router-dom";
 import { Fragment, useState } from "react";
 import { getCountriesSearch } from "../../redux/ducks/countriesDuck";
 import { useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 function Search() {
   const [search, setSearch] = useState("");
@@ -31,10 +33,12 @@ function Search() {
           name="country"
           value={search}
           onChange={handleChange}
-          className={s.input}
+          className={s.form__input}
           placeholder="Search countries..."
         />
-        <button className={s.btn}>Search</button>
+        <button className={s.form__btn}>
+          <FontAwesomeIcon icon={faSearch} className={s.search__icon} />
+        </button>
       </form>
       {redirect && <Redirect to="/search" />}
     </Fragment>

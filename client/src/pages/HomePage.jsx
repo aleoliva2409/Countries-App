@@ -1,3 +1,4 @@
+import s from '../sass/listCountries/ListCountries.module.sass'
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ListCountries from "../components/listCountries/ListCountries";
@@ -22,8 +23,14 @@ function HomePage() {
   return (
     <div className="wrapper">
       <ListCountries reduxState={countries} reduxName="db" />
-      <div className={`btn__container ${countries[0] === undefined ? "d__none" : "d__block"}`}>
-        <button className="btn" onClick={reload}>Volver a cargar los paises</button>
+      <div
+        className={`${s.btn__paginations} ${
+          countries[0] === undefined ? "d__none" : "d__block"
+        }`}
+      >
+        <button className={s.btn} style={{ margin: "3em" }} onClick={reload}>
+          Load countries again
+        </button>
       </div>
     </div>
   );

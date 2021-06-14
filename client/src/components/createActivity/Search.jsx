@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import s from "./Form.module.css"
 import Cards from "./Cards";
 
 function Search({ countries , state , changeState, search, setSearch }) {
@@ -52,16 +51,16 @@ function Search({ countries , state , changeState, search, setSearch }) {
     e.preventDefault();
   };
   return (
-    <div className={s.search__container}>
-      <div className={`${s.search}`}>
-        <label className={`${s.search__label}`} htmlFor="country">
-          Search:{" "}
+    <div className="">
+      <div className="">
+        <label className="" htmlFor="country">
+          Search:
         </label>
         <input
           type="text"
           id="country"
           name="country"
-          className={`${s.input} ${s.search__input}`}
+          className=""
           onChange={handleSearch}
           value={search}
           placeholder="Search countries..."
@@ -72,16 +71,16 @@ function Search({ countries , state , changeState, search, setSearch }) {
         state={state}
         changeState={changeState}
       />
-      <div className={s.btn__paginations}>
+      <div className="">
         <button
-          className={`${s.btn} ${prevBtn() && s.btn__disabled}`}
+          // className={`${s.btn} ${prevBtn() && s.btn__disabled}`}
           onClick={prevPage}
           disabled={prevBtn()}
         >
           prev
         </button>
         <button
-          className={`${s.btn} ${nextBtn() && s.btn__disabled}`}
+          // className={`${s.btn} ${nextBtn() && s.btn__disabled}`}
           onClick={nextPage}
           disabled={nextBtn()}
         >

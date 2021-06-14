@@ -1,0 +1,55 @@
+.container 
+  min-height: 93.5vh
+  background-image: url(../../assets/img/404NotFound.jpg)
+  background-repeat: no-repeat
+  background-position: center center
+  background-size: cover
+  background-attachment: fixed
+  color: #fff
+  font-size: 1rem
+
+
+.container::before 
+  content: ""
+  width: 100%
+  min-height: 100vh
+  position: absolute
+  top: 0
+  left: 0
+  background: rgb(32, 32, 32)
+  opacity: 0.5
+
+
+.text 
+  position: relative
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  min-height: 80vh
+  opacity: 0.8
+  letter-spacing: 2px
+  font-size: 1rem
+
+
+.title 
+  font-size: 5em
+
+
+.subTitle 
+  font-size: 4em
+
+
+@media screen and (min-width: 576px)
+  .title 
+    font-size: 7em
+
+  .subTitle 
+    font-size: 6em
+
+@media screen and (min-width: 768px)
+  .title 
+    font-size: 9em
+
+  .subTitle 
+    font-size: 7em

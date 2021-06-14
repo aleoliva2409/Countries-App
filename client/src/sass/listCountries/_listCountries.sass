@@ -1,0 +1,35 @@
+@use '../vars/_colors' as c
+@use '../vars/_mixins' as mixin
+
+.container 
+  font-size: 1rem
+  padding: 2em
+
+.filters__container
+  font-size: 1rem
+  display: flex
+  justify-content: center
+
+.btn__showFilters
+  @include mixin.btn
+  background-color: c.$elements-dark
+  margin: 1em 0
+
+  &:active
+    box-shadow: inset 1px 2px 6px 18px #141e27
+
+.btn__paginations
+  display: flex
+  justify-content: space-around
+
+.btn
+  @include mixin.btn
+  background-color: c.$elements-dark
+  margin: 5px 0
+
+  &__disabled
+    color: #777777
+    background-color: #141e27
+
+  &:active
+    box-shadow: inset 1px 2px 6px 18px #141e27
