@@ -32,6 +32,7 @@ function Inputs({state, changeState}) {
           onChange={handleForm}
           value={state.name}
           placeholder="Name activity..."
+          required
         />
       </div>
       <div className={s.input__container}>

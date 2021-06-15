@@ -3,12 +3,16 @@ import React, { useState } from "react";
 import Inputs from "./Inputs";
 import Search from "./Search";
 import Keywords from "./Keywords";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { reset, getCountries } from "../../redux/ducks/countriesDuck";
 import { postActivity } from "../../redux/ducks/activitiesDuck";
+import swal from 'sweetalert'
 
 function Form({ countries }) {
   const dispatch = useDispatch();
+  const countriesAdded = useSelector(
+    (state) => state.countries.countriesSelected
+  );
 
   const [search, setSearch] = useState("");
   const [form, setForm] = useState({
@@ -31,6 +35,11 @@ function Form({ countries }) {
     });
     dispatch(getCountries("form"));
     dispatch(reset());
+    swal({
+      title: "Submitted Form",
+      icon: "success",
+      button: "Ok"
+    })
     e.preventDefault();
   };
 
@@ -48,7 +57,14 @@ function Form({ countries }) {
         />
         <Keywords state={form} changeState={setForm} />
         <div className={s.btn__container}>
-          <button className={s.btn}>Create</button>
+          <button
+            className={`${s.btn} ${
+              countriesAdded[0] === undefined && s.btn__disabled
+            }`}
+            disabled={countriesAdded[0] === undefined ? true : false}
+          >
+            Create
+          </button>
         </div>
       </form>
     </div>
