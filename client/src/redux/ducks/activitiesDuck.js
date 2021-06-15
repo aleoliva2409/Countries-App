@@ -51,11 +51,13 @@ export function postActivity(payload) {
 
       const data = {
         name: name.toLowerCase(),
-        difficulty,
+        difficulty: parseInt(difficulty),
         duration: duration.toLowerCase(),
         season,
         countries
       }
+
+      console.log(data)
 
       const res = await axios.post("http://localhost:3001/activity", data);
       return dispatch({

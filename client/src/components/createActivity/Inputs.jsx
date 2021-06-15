@@ -1,22 +1,13 @@
-import s from '../../sass/createActivity/Form.module.sass'
-import React from 'react'
+import s from "../../sass/createActivity/Form.module.sass";
+import React from "react";
 
-function Inputs({state, changeState}) {
-
+function Inputs({ state, changeState }) {
   const handleForm = (e) => {
-    if(e.target.name === 'difficulty') {
-      changeState({
-        ...state,
-        [e.target.name]: e.target.valueAsNumber
-      });
-    } else {
-      
-      changeState({
-        ...state,
-        [e.target.name]: e.target.value,
-      });
-    }
-  }
+    changeState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
     <div className={s.inputs__container}>
@@ -118,4 +109,4 @@ function Inputs({state, changeState}) {
   );
 }
 
-export default Inputs
+export default Inputs;

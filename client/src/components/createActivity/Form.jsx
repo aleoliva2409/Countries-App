@@ -6,7 +6,9 @@ import Keywords from "./Keywords";
 import { useDispatch, useSelector } from "react-redux";
 import { reset, getCountries } from "../../redux/ducks/countriesDuck";
 import { postActivity } from "../../redux/ducks/activitiesDuck";
-import swal from 'sweetalert'
+// import Swal from 'sweetalert2'
+import Swal from "sweetalert2/src/sweetalert2.js";
+
 
 function Form({ countries }) {
   const dispatch = useDispatch();
@@ -35,11 +37,13 @@ function Form({ countries }) {
     });
     dispatch(getCountries("form"));
     dispatch(reset());
-    swal({
+    Swal.fire({
       title: "Submitted Form",
       icon: "success",
-      button: "Ok"
-    })
+      showConfirmButton: false,
+      showCloseButton: true,
+      background: "#2b3945"
+    });
     e.preventDefault();
   };
 
