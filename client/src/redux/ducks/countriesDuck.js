@@ -141,7 +141,7 @@ export default function reducer(state = inicialState, action) {
     case REMOVE_COUNTRY_SELECTED:
       return {
         ...state,
-        countriesSelected: action.payload,
+        countriesSelected: [...action.payload],
       };
 
     case RESET_FORM:

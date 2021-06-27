@@ -17,7 +17,7 @@ function Keywords({state,changeState}) {
     dispatch(addCountryForm(e.target.id, countriesSelected));
     changeState({
       ...state,
-      countries: state.countries.filter(country => country.id !== e.target.id)
+      countries: state.countries.filter(country => country !== e.target.id)
     })
     e.preventDefault();
   };
