@@ -1,49 +1,27 @@
-const { Country, Activity } = require("../db");
+const { Activity } = require("../db");
+const { Op } = require("sequelize");
 
 const postActivity = async (req, res) => {
   try {
     const { name, difficulty, duration, season, countries } = req.body;
 
-    // ! hacer expresion regular para limitar el name de la acitivity
-    const activity = await Activity.findAll({
+    const actividad = await Activity.findOrCreate({
       where: {
-        name: name,
+        name: {
+          [Op.iLike]: `%${name}%`
+        }
       },
-    });
-
-    if (activity[0] === undefined) {
-      const activityCreated = await Activity.create({
+      defaults: {
         name,
         difficulty,
         duration,
         season,
-      });
+      }
+    })
 
-      for (let country of countries) {
-        const item = await Country.findByPk(country);
-        await activityCreated.addCountry(item);
-      }
-      return res.status(201).json([{ msg: "Activity created successfully" }]);
-    } else {
-      for (let country of countries) {
-        const item = await Country.findByPk(country);
-        const items = await Country.findByPk(country, {
-          include: Activity,
-        });
-        if (items?.activities[0] !== undefined) {
-          for (let act of items.activities) {
-            if (act.name !== name) {
-              await activity[0].addCountry(item);
-            }
-          }
-        } else {
-          await activity[0].addCountry(item);
-        }
-      }
-      return res
-        .status(200)
-        .json([{ msg: "activity already exists but it has been added" }]);
-    }
+    await actividad[0].addCountries(countries);
+
+    return res.json([{ msg: "Activity created successfully" }])
   } catch (err) {
     console.log(err);
     res.status(404).json([

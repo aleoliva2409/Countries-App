@@ -1,91 +1,38 @@
-const axios = require("axios");
+const { Op } = require("sequelize")
 const { Country, Activity } = require("../db");
-
-let data = false;
 
 const getCountries = async (req, res) => {
   try {
     const { name } = req.query;
 
     if (!name) {
-      if (data === false) {
-        const resp = await axios.get(`https://restcountries.eu/rest/v2/all`);
-        const countries = resp.data;
 
-        for (let i = 0; i < countries.length; i++) {
-          await Country.create({
-            id: countries[i].alpha3Code,
-            name: countries[i].name,
-            image: countries[i].flag,
-            continent: countries[i].region,
-            capital: countries[i].capital,
-            subregion: countries[i].subregion,
-            area: `${countries[i].area} km2`,
-            population: countries[i].population,
-          });
-        }
+        const countriesDB = await Country.findAll({
+          include: [
+            {
+              model: Activity
+            }
+          ]
+        });
 
-        const countriesDB = await Country.findAll();
-        data = true;
+        return res.json(countriesDB);
 
-        let aux = []
-
-        for (let country of countriesDB) {
-          const activity = await Country.findByPk(country.id, {
-            include: Activity,
-          });
-
-          aux.push({
-            ...country.dataValues,
-            activities: activity?.activities || [],
-          });
-        }
-
-        return res.json(aux);
-      } else {
-        const countriesDB = await Country.findAll();
-        let aux = [];
-
-        for (let country of countriesDB) {
-          const activity = await Country.findByPk(country.id, {
-            include: Activity,
-          });
-
-          aux.push({
-            ...country.dataValues,
-            activities: activity?.activities || [],
-          });
-        }
-
-        return res.json(aux);
-      }
     } else {
-      const resp = await axios.get(
-        `https://restcountries.eu/rest/v2/name/${name}`
-      );
-      const countries = resp.data;
-      let data = []
 
-      
-      for(let country of countries) {
-        const activity = await Country.findByPk(country.alpha3Code, {
-          include: Activity,
-        });
-        
-        data.push({
-          id: country.alpha3Code,
-          name: country.name,
-          image: country.flag,
-          continent: country.region,
-          capital: country.capital,
-          subregion: country.subregion,
-          area: `${country.area} km2`,
-          population: country.population,
-          activities: activity?.activities || [],
-        });
-      }
+      const countriesSearch = await Country.findAll({
+        where: {
+          name: {
+            [Op.iLike]: `%${name}%`,
+          }
+        },
+        include: [
+          {
+            model: Activity,
+          }
+        ]
+      })
 
-      return res.json(data);
+      return res.json(countriesSearch)
     }
   } catch (error) {
     console.log(error);

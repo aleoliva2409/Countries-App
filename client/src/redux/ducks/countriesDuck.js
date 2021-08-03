@@ -29,7 +29,7 @@ const RESET_FORM = "RESET_FORM";
 const inicialState = {
   countriesDB: [],
   countriesSearch: [],
-  countryDetails: [],
+  countryDetails: {},
   countriesForm: [],
   countriesSelected: [],
 };
