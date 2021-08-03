@@ -3,6 +3,8 @@
 This project was bootstrapped with React JS, Redux, Node JS, Express, Sequelize, PostgreSQL
 
 This command will install dependencies to run this application.
+
+Link: https://countries-app-zeta.vercel.app/
 ```
 npm install
 ```
