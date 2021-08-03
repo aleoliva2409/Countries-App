@@ -11,7 +11,7 @@ or
 yarn install
 ```
 
-![app](https://media.discordapp.net/attachments/402985413079465985/872213159522476082/unknown.png?width=910&height=500)
-![app](https://media.discordapp.net/attachments/402985413079465985/872213919391961128/unknown.png?width=910&height=500)
-![app](https://media.discordapp.net/attachments/402985413079465985/872213439488065566/unknown.png?width=910&height=500)
-![app](https://media.discordapp.net/attachments/402985413079465985/872213557289308170/unknown.png?width=910&height=500)
+![app](https://media.discordapp.net/attachments/402985413079465985/872213159522476082/unknown.png?width=1000&height=500)
+![app](https://media.discordapp.net/attachments/402985413079465985/872213919391961128/unknown.png?width=1000&height=500)
+![app](https://media.discordapp.net/attachments/402985413079465985/872213439488065566/unknown.png?width=1000&height=500)
+![app](https://media.discordapp.net/attachments/402985413079465985/872213557289308170/unknown.png?width=1000&height=500)
