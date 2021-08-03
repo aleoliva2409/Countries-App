@@ -34,7 +34,7 @@ export default function reducer(state = inicialState, action) {
 
 export function getActivities() {
   return async function (dispatch) {
-    const res = await axios.get(`http://localhost:3001/activity`);
+    const res = await axios.get(`/activity`);
 
     return dispatch({
       type: GET_ACTIVITIES,
@@ -59,7 +59,7 @@ export function postActivity(payload) {
 
       console.log(data)
 
-      const res = await axios.post("http://localhost:3001/activity", data);
+      const res = await axios.post("/activity", data);
       return dispatch({
         type: POST_ACTIVITY,
         payload: {

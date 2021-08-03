@@ -21,8 +21,6 @@ const REMOVE_COUNTRY_FORM = "REMOVE_COUNTRY_FORM";
 const ADD_COUNTRY_SELECTED = "ADD_COUNTRY_SELECTED";
 const REMOVE_COUNTRY_SELECTED = "REMOVE_COUNTRY_SELECTED";
 const RESET_FORM = "RESET_FORM";
-// const ADD_CODE = "ADD_CODE";
-// const REMOVE_CODE = "REMOVE_CODE";
 
 //reducer
 
@@ -160,7 +158,7 @@ export default function reducer(state = inicialState, action) {
 export function getCountries(name) {
   return async function (dispatch) {
     try {
-      const res = await axios.get("http://localhost:3001/countries");
+      const res = await axios.get("/countries");
 
       if(name === "form") {
         return dispatch({type: GET_COUNTRIES_FORM, payload: res.data})
@@ -177,7 +175,7 @@ export function getCountriesSearch(name) {
   return async function (dispatch) {
     try {
       const res = await axios.get(
-        `http://localhost:3001/countries?name=${name}`
+        `/countries?name=${name}`
       );
 
       return dispatch({ type: GET_COUNTRIES_SEARCH, payload: res.data });
@@ -298,7 +296,7 @@ export function sortByPopulation(countries, reduxName, sort) {
 export function getCountryDetails(id) {
   return async function (dispatch) {
     try {
-      const res = await axios.get(`http://localhost:3001/countries/${id}`);
+      const res = await axios.get(`/countries/${id}`);
       return dispatch({
         type: GET_COUNTRY_DETAILS,
         payload: res.data,
