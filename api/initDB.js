@@ -16,7 +16,7 @@ const initDB = async() => {
           name: countries[i].name,
           image: countries[i].flag,
           continent: countries[i].region,
-          capital: countries[i].capital,
+          capital: countries[i].capital ? countries[i].capital : "",
           subregion: countries[i].subregion,
           area: `${countries[i].area} km2`,
           population: countries[i].population,
