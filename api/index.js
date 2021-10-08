@@ -22,7 +22,7 @@ const { conn } = require('./src/db.js');
 const { initDB } = require('./initDB')
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
   initDB().then(() => {
     console.log("DB loaded")
   })
