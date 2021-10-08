@@ -7,7 +7,7 @@ const initDB = async() => {
     if(countries.length === 250) {
       return
     } else {
-      const resp = await axios.get(`https://restcountries.eu/rest/v2/all`);
+      const resp = await axios.get(`https://restcountries.com/v2/all`);
       const countries = resp.data;
 
       for (let i = 0; i < countries.length; i++) {
